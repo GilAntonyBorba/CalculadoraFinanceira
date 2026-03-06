@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amortização e VPL - Calculadora Financeira</title>
+    
+    <link rel="icon" href="/" type="image/jpg">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="src/styles/reset.css">
+    <link rel="stylesheet" href="src/styles/style.css">
+    <link rel="stylesheet" href="src/styles/styleDashboard.css">
+    <link rel="stylesheet" href="src/styles/styleNav.css">
+
+    <style>
+      .navbar-toggler-icon {
+        background: transparent; 
+      }
+      .navbar-toggler-icon:before,
+      .navbar-toggler-icon:after {
+          background-color: #ff0000; 
+      }
+
+      .tabela-price {
+        width: 100%;
+        margin-top: 1em;
+        border-collapse: collapse;
+        color: #ffffff;
+      }
+      .tabela-price th, .tabela-price td {
+        border: 1px solid #ffffff;
+        padding: 8px;
+        text-align: center;
+      }
+      .tabela-price th {
+        background-color: #333;
+      }
+    </style>
+</head>
+<body>
+    
+    <header class="header">
+      <nav class="navbar fixed-top navbar-expand-lg ">
+        <div class="container-fluid gap-2">
+          <button class="navbar-toggler navbar-toggler-custom order-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" ></span>
+          </button>
+          <a class="navbar-brand order-2 mx-auto" href="index.html">
+            <img src="src/img/math.png" class="logo" width="75%" height="75%" margin-left="0" alt="LOGO - CALC FINANC">
+          </a>
+          
+          <div class="collapse navbar-collapse order-3" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" id="color-picker" href="index.html">Capitalização Simples</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="color-picker" href="composta.html">Capitalização Composta</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" id="color-picker" href="amortizacao.html">Amortização e VPL</a>
+                </li>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      
+<h2 class="page-title">
+        Tabela Price (SAF)
+      </h2>
+      <div class="form-container">
+        <form action="#" method="post">
+          <div class="column-form">
+            <div class="campo">
+              <label for="valor-financiamento">Valor do Financiamento (VP)</label>
+              <input type="number" id="valor-financiamento" placeholder="Ex: 30000">  
+            </div>
+          </div>
+
+          <div class="column-form">
+            <div class="column-form-dobro">
+              <div class="campo" style="margin-right: 1em;">
+                <label for="taxa-price">Taxa de Juros (i) (% ao mês)</label>
+                <input type="number" id="taxa-price" placeholder="Ex: 4.22">
+              </div>
+    
+              <div class="campo">
+                <label for="tempo-price">Número de Parcelas (n) (meses)</label>
+                <input type="number" id="tempo-price" placeholder="Ex: 4">
+              </div>
+            </div>
+            <p style="color: #aaaaaa; font-size: 0.85em; margin-top: 10px; text-align: center;">
+              OBS: Assuma que a taxa e o tempo estão em meses!
+            </p>
+          </div>
+          
+          <div class="button-container">
+            <button type="button" id="btn-calcular-price" class="select-button">
+              Gerar Tabela
+            </button>
+          </div>
+        </form>
+      </div>
+
+
+
+
+
+
+      <div class="resultado" id="resultado-price" style="width: 80%; margin-top: 2em; padding: 1rem;">
+        <h2>Tabela de Amortização</h2>
+        <div id="tabela-container">
+          <p style="color: gray; font-size: 0.9em;">Preencha os dados para gerar a tabela.</p>
+        </div>
+      </div>
+
+      <h2 class="page-title" style="margin-top: 2em; border-top: 1px solid #ccc; padding-top: 1em;">
+        Valor Presente Líquido (VPL)
+      </h2>
+      <div class="form-container">
+        <form id="form-vpl" action="#" method="post">
+          <div class="column-form">
+            <div class="campo">
+              <label for="investimento-vpl">Investimento Inicial</label>
+              <input type="number" id="investimento-vpl" placeholder="Ex: 500">
+              <small style="color: gray;">OBS: Já consideramos este valor como valor negativo na fórmula!</small>
+            </div>
+
+            <div class="column-form-dobro">
+              <div class="campo" style="width: 100%;">
+                <label for="taxa-vpl">Taxa de Desconto (%)</label>
+                <input type="number" id="taxa-vpl" placeholder="Ex: 10">
+              </div>
+            </div>
+          </div>
+
+          <div class="column-form">
+            <div class="campo">
+              <label for="fluxos-vpl">Fluxos de Caixa (separados por vírgula)</label>
+              <input type="text" id="fluxos-vpl" placeholder="Ex: 200, 250, 400">
+            </div>
+
+            <div class="column-form-dobro">
+              <div class="campo">
+                <label for="valor-residual">Valor Residual</label>
+                <input type="number" id="valor-residual" placeholder="Ex: 0">
+              </div>
+              <div class="campo">
+                <label for="periodo-residual">Período do Residual</label>
+                <input type="number" id="periodo-residual" placeholder="Ex: 3">
+              </div>
+            </div>
+          </div>
+          
+          <div class="button-container">
+            <button type="button" id="btn-calcular-vpl" class="select-button">
+              Calcular VPL
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="resultado" id="resultado-vpl" style="margin-top: 2em;">
+        <h2>Resultado VPL</h2>
+      </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script src="src/js/amortizacao.js"></script>
+
+</body>
+</html>

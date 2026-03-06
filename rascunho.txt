@@ -1,0 +1,5 @@
+Capital (VP)
+Montante (VF)
+Juros(J)
+Taxa(i)
+Tempo(n)

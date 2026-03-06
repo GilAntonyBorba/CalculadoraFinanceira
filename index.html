@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Dashboard</title>
+    
+    
+    <link rel="icon" href="/" type="image/jpg">
+
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="src/styles/reset.css">
+    <link rel="stylesheet" href="src/styles/style.css">
+    <link rel="stylesheet" href="src/styles/styleDashboard.css">
+    <link rel="stylesheet" href="src/styles/styleNav.css">
+    <title>Dashboard</title>
+
+    <style>
+      .navbar-toggler-icon {
+        background: transparent; 
+      }
+
+      .navbar-toggler-icon:before,
+      .navbar-toggler-icon:after {
+          background-color: #ff0000; 
+      }
+
+      .navbar-collapse{
+        margin-right: 0%;
+      }
+
+      
+    </style>
+</head>
+<body>
+    
+    <header class="header">
+      <nav class="navbar fixed-top navbar-expand-lg ">
+        <div class="container-fluid  gap-2">
+          <button class="navbar-toggler navbar-toggler-custom order-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" ></span>
+          </button>
+          <a class="navbar-brand order-2 mx-auto" href="index.html">
+            <img src="src/img/math.png" class="logo" width="75%" height="75%" margin-left="0" alt="LOGO - CALC FINANC">
+          </a>
+          
+          <div class="collapse navbar-collapse order-3" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" id="color-picker" href="index.html">Capitalização Simples</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="color-picker" href="composta.html">Capitalização Composta</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="color-picker" href="amortizacao.html">Amortização e VPL</a>
+                </li>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+
+    <main>
+      
+      <h2 class="page-title">
+        <!-- Capitalização Simples -->
+      </h2>
+      <div class="form-container">
+        <form action="#" method="post">
+          <div class="column-form">
+            <div class="campo">
+              <label for="valor-presente">Capital (VP)</label>
+              <input type="number" id="valor-presente" name="valor-presente" placeholder="4000">  
+            </div>
+
+            <div class="campo">
+              <label for="valor-futuro">Montante (VF)</label>
+              <input type="number" id="valor-futuro" name="valor-futuro" placeholder="12000">
+            </div>
+  
+            <div class="campo">
+              <label for="juros">Juros (J)</label>
+              <input type="number" id="juros" name="juros" placeholder="2000">
+            </div>
+          </div>
+
+          <div class="column-form">
+            <div class="column-form-dobro">
+              <div class="campo">
+                <label for="taxa">Taxa (i) (%)</label>
+                <input type="number" id="taxa" name="taxa" placeholder="6">
+              </div>
+    
+              <div class="campo">
+                <label for="unidade-taxa">Unidade da Taxa</label>
+                <select id="unidade-taxa" name="unidade-taxa">
+                  <option value="mes">Ao Mês</option>
+                  <option value="ano">Ao Ano</option>
+                  <option value="dia">Ao Dia</option>
+                </select>
+              </div>
+            </div>
+            <div class="column-form-dobro">
+              <div class="campo">
+                <label for="tempo">Tempo (n)</label>
+                <input type="number" id="tempo" name="tempo" placeholder="2">
+              </div>
+              
+              <div class="campo">
+                <label for="unidade-tempo">Unidade do Tempo</label>
+                <select id="unidade-tempo" name="unidade-tempo">
+                  <option value="mes">Mes(es)</option>
+                  <option value="ano">Ano(s)</option>
+                  <option value="dia">Dia(s)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          
+          <div class="button-container">
+            <p>Calcular&nbsp</p>
+            <select id="button-calcular" name="button-calcular" class="select-button">
+                  <option value="">Selecione...</option>
+                  <option value="vp">Capital (VP)</option>
+                  <option value="vf">Montante (VF)</option>
+                  <option value="juros">Juros(J)</option>
+                  <option value="taxa">Taxa(i)</option>
+                  <option value="tempo">Tempo(n)</option>
+                </select>
+          </div>
+        </form>
+      </div>
+
+      <div class="resultado">
+        <h2>Resultado</h2>
+
+
+      </div>
+
+
+
+
+
+
+
+
+      <h2 class="page-title" style="margin-top: 2em;">
+        Taxa Efetiva (i) vs. Comercial (ic)
+      </h2>
+      <div class="form-container">
+        <form action="#" method="post" id="form-desconto">
+          <div class="column-form">
+            <div class="campo">
+              <label for="taxa-ic">Taxa Comercial (ic) (%)</label>
+              <input type="number" id="taxa-ic" name="taxa-ic" placeholder="8"> 
+            </div>
+            <div class="campo">
+              <label for="taxa-i">Taxa Efetiva (i) (%)</label>
+              <input type="number" id="taxa-i" name="taxa-i" placeholder="13.33">
+            </div>
+          </div>
+
+          <div class="column-form">
+            <div class="campo">
+              <label for="tempo-desconto">Tempo (n)</label>
+              <input type="number" id="tempo-desconto" name="tempo-desconto" placeholder="5">
+            </div>
+            <div class="campo">
+              <label for="unidade-tempo-desconto">Unidade do Tempo</label>
+              <select id="unidade-tempo-desconto" name="unidade-tempo-desconto">
+                <option value="mes">Mese(s)</option>
+                <option value="ano">Ano(s)</option>
+                <option value="dia">Dia(s)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="button-container">
+            <p>Calcular&nbsp;</p>
+            <select id="button-calcular-desconto" name="button-calcular-desconto" class="select-button">
+                <option value="">Selecione...</option> 
+                <option value="calc-i">Taxa Efetiva (i)</option>
+                <option value="calc-ic">Taxa Comercial (ic)</option>
+            </select>
+          </div>
+        </form>
+      </div>
+
+      <div class="resultado" id="resultado-desconto" style="margin-top: 1em;">
+        <h2>Resultado (Desconto)</h2>
+      </div>
+
+
+
+      
+    </main>
+    
+
+
+    <footer>
+        <!-- <a href="https://www.flaticon.com/free-icons/math" title="math icons">Math icons created by deemakdaksina - Flaticon</a> -->
+    </footer>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    
+
+    <script src="src/js/simples.js"></script>
+
+
+  </body>
+</html>

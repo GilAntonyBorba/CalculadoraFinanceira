@@ -1,0 +1,214 @@
+
+.navbar {
+  --bs-navbar-padding-x: 0;
+  --bs-navbar-padding-y: 0;
+  font-family: 'Corinthia', sans-serif;
+  font-size: 170px;
+}
+
+.nav-item{
+  font-size: 45px;
+}
+#color-picker{
+  color: white;
+  font-size: 20px;
+}
+nav{
+  /* background-image: linear-gradient(270deg, #b9ebd7, #14baff 45%, #02a394); */
+  /* background-image: linear-gradient(80deg, #000000, #02a394 45%, #02a394 1%); */
+  color: #ffffff;
+  backdrop-filter: blur(100px);
+  display: flex;
+  justify-content: space-evenly; /* Garante que os componentes sejam distribuídos com espaçamento */
+  align-items: center; /* Alinha os itens no centro verticalmente */
+  /* padding: 10px 20px; */
+  /* border-bottom: 2px solid white; */
+}
+.container-fluid {
+  display: flex;
+  justify-content: space-between; /* Espaça os itens dentro do container */
+  width: 100%;
+}
+.navbar-nav {
+  display: flex;
+  justify-content: space-around;
+  gap: 0.5em; 
+}
+
+.nav-item {
+  font-size: 38px;
+}
+
+
+.navbar-collapse {
+  display: flex;
+  justify-content: center; 
+  /* gap: 10%; */
+  /* Espaçamento entre os itens da navbar */
+  /* margin-right: 40%; */
+}
+
+.navbar-brand {
+  display: flex;
+  justify-content: center;
+  /* margin-right: 10px; */
+}
+
+.nav-link{
+  white-space: nowrap;
+}
+
+.nav-link.dropdown-toggle {
+  color: #ffffff; /* Altere para a cor que desejar */
+}
+
+.nav-link.dropdown-toggle svg {
+  fill: #ffffff; /* Altere para a cor que desejar */
+}
+
+/* Altera a cor do ícone hamburguer */
+.navbar-toggler-icon {
+    background-color: transparent; /* Remove o fundo padrão */
+}
+
+.navbar-toggler-icon:before,
+.navbar-toggler-icon:after {
+    background-color: #ff0000; /* Cor das barras (vermelho, neste caso) */
+}
+
+/* -------------------------------------------------------------------------------------------- */
+/* Linha branca abaixo de cada item da navba */
+/* -------------------------------------------------------------------------------------------- */
+
+.nav-item a {
+  position: relative;
+  /* Necessário para adicionar a linha abaixo */
+  text-decoration: none; /* Remove sublinhado padrão */
+}
+
+.nav-item a::after {
+  content: ""; /* Linha visível */
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px; /* Ajusta a posição da linha */
+  height: 3px; /* Espessura da linha */
+  background-color: #FDFFE1; /* Cor da linha */
+  opacity: 0; /* Esconde a linha por padrão */
+  transition: opacity 0.4s ease; /* Suaviza a aparição da linha */
+  border-radius: 1px;
+  box-shadow: 0px -3px 25.8px 1.5px #FDFFE1;
+}
+
+.nav-item a:hover::after, .nav-item a.active::after {
+  opacity: 1; /* Mostra a linha ao passar o mouse ou na página ativa */
+}
+
+.navbar-brand{
+  width: 4%;
+}
+.navbar-brand img{
+  width: 40px;
+  padding: 5%;
+}
+
+/* -------------------------------------------------------------------------------------------- */
+#color-button-picker{
+  /* color: rgb(240, 248, 255); */
+  color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.121);
+  border-color: #1d1e1ee1;
+  
+}
+#color-button-picker:hover{
+  color: rgba(0, 0, 0, 0.899);
+  background-color: #ffffff;
+}
+#color-input-picker{
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.121);
+  border-color: #1d1e1ee1;
+}
+#color-input-picker:focus{
+  backdrop-filter: blur(10px);
+  background-color: #ffffff;
+}
+li .active{
+  /* background-color: #000000; */
+  /* border-radius: 20% 4% 20% 4%; */
+  /* border: 1px solid #04c7e9; */
+  
+}
+.active svg{
+  color: #f5f5f7;
+  
+}
+.navbar-toggler-icon {
+    background: transparent; /* Torna o fundo transparente */
+}
+
+.navbar-toggler-icon:before,
+.navbar-toggler-icon:after {
+    background-color: #ff0000; /* Cor das barras */
+}
+@media (max-width: 415px) {
+  .navbar-toggler-custom .navbar-toggler-icon {
+    font-size: 0.6rem;
+  }
+  .logo{
+    width: 160px;
+    height: 27.745px;
+  }
+  .icon_menu-cart{
+    width: 16px;
+    height: 16px;
+  }
+  .icon_menu-person{
+    width: 19px;
+    height: 19px;
+  }
+  li .active{
+    background-color: #f5f5f7;
+    border-radius: 0%;
+  }
+}
+@media (min-width: 416px) and (max-width: 575px) {
+  .navbar-toggler-custom .navbar-toggler-icon {
+    font-size: 1rem;
+  }
+  .icon_menu-cart{
+    width: 16px;
+    height: 16px;
+  }
+  .icon_menu-person{
+    width: 19px;
+    height: 19px;
+  }
+  li .active{
+    background-color: #f5f5f7;
+    border-radius: 0%;
+  }
+}
+@media (min-width: 576px) and (max-width: 1000px) {
+  .navbar-toggler-custom .navbar-toggler-icon {
+    font-size: 1.5rem;
+  }
+  .icon_menu-cart{
+    width: 18px;
+    height: 18px;
+  }
+  .icon_menu-person{
+    width: 21px;
+    height: 21px;
+  }
+  li .active{
+    background-color: #f5f5f7;
+    border-radius: 0%;
+  }
+}
+@media (min-width: 992px) {
+  .navbar-toggler-custom .navbar-toggler-icon {
+    font-size: 2rem;
+    
+  }
+}
